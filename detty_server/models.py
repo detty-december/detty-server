@@ -11,9 +11,36 @@ from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import AbstractUser, AbstractBaseUser, BaseUserManager, UserManager
 
+USER_TYPE = (
+    ('0', 'CUSTOMER'),
+    ('1', 'BUSINESS'),
+)
+
 
 class User(models.Model):
-    user_id = models.UUIDField()
+    user_id = models.UUIDField(primary_key=True, auto_created=True)
+    user_type = models.IntegerField(choices=USER_TYPE)
+
+    class Meta:
+        app_label = 'detty_server'
+
+
+class Event(models.Model):
+    event_id = models.UUIDField(primary_key=True, auto_created=True)
+    location = models.CharField(max_length=255)
+    event_name = models.CharField(max_length=255)
+    event_description = models.CharField(max_length=255)
+    event_summary = models.CharField(max_length=255)
+
+    class Meta:
+        app_label = 'detty_server'
+
+
+class Comment(models.Model):
+    comment_id = models.UUIDField(primary_key=True, auto_created=True)
+    user_id = User.user_id
+    event_id = Event.event_id
+    comment = models.CharField(max_length=255)
 
     class Meta:
         app_label = 'detty_server'
