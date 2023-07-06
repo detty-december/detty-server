@@ -31,15 +31,15 @@ class Event(models.Model):
     event_name = models.CharField(max_length=255)
     event_description = models.CharField(max_length=255)
     event_summary = models.CharField(max_length=255)
+    attendees = models.ManyToManyField(User, related_name='events_attending')
 
     class Meta:
         app_label = 'detty_server'
 
 
 class Comment(models.Model):
-    comment_id = models.UUIDField(primary_key=True, auto_created=True)
-    user_id = User.user_id
-    event_id = Event.event_id
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
     comment = models.CharField(max_length=255)
 
     class Meta:
