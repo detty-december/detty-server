@@ -1,10 +1,14 @@
 import uuid
 
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 
 from detty_server.models import User
 
 
 def home(request):
-    User.objects.create(user_id=uuid.uuid4())
-    return render(request, "home.html")
+    data = {
+        'message': 'Hello, World!',
+        'status': 'success'
+    }
+    return JsonResponse(data, safe=False)
