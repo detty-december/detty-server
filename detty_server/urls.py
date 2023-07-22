@@ -16,9 +16,6 @@ Including another URLconf
 """
 from django.urls import path, include
 
-from detty_server import views
-
 urlpatterns = [
-    path("", views.home, name="home"),
-    path("api/",  include('detty_server.api.urls'))
+    path("api/v1/", include('api.v1.urls')),
 ]

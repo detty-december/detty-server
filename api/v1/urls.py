@@ -15,17 +15,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from django.urls import include, path
+from django.urls import path
 
-from . import views as v
+from api.v1 import views
 
 app_name = 'detty_server'
 
-v1_urlpatterns = [
-    path('getEvents/', v.get_events, name='get_events'),
-    path('videos/<int:pk>/', v.video_detail, name='video_detail'),
-]
-
 urlpatterns = [
-    path('v1/', include(v1_urlpatterns)),
+    path('events/', views.EventView.as_view(), name='getEvents'),
 ]
