@@ -14,8 +14,13 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.urls import path, include
+
+from django.urls import path
+
+from api.v1 import views
+
+app_name = 'detty_server'
 
 urlpatterns = [
-    path("api/v1/", include('api.v1.urls')),
+    path('events/', views.EventView.as_view(), name='events'),
 ]
