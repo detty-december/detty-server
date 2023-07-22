@@ -22,5 +22,5 @@ from api.v1 import views
 app_name = 'detty_server'
 
 urlpatterns = [
-    path('events/', views.EventView.as_view(), name='getEvents'),
+    path('events/', views.EventView.as_view(), name='events'),
 ]

@@ -118,5 +118,5 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     # add any other domains that need access
 ]
-CSRF_TRUSTED_ORIGINS = ['http://localhost:3000']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:3000'] #This is not safe, probably
 CORS_ALLOW_CREDENTIALS = True
