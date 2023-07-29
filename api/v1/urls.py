@@ -23,4 +23,6 @@ app_name = 'detty_server'
 
 urlpatterns = [
     path('events/', views.EventView.as_view(), name='events'),
+    path('business/events/', views.BusinessEventView.as_view(), name='business_events'),
+    path('business/users/', views.BusinessUserView.as_view(), name='business_user'),
 ]

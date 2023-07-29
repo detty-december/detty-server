@@ -31,6 +31,7 @@ class Event(models.Model):
     event_description = models.CharField(max_length=255)
     event_summary = models.CharField(max_length=255)
     attendees = models.ManyToManyField(User, related_name='events_attending')
+    owner_id = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
         app_label = 'api'
